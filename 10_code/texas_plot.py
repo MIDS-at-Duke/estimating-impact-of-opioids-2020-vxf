@@ -14,7 +14,11 @@ df_treatment_TX = mor_pop[mor_pop['State_Abrv'] == 'TX'].copy()
 df_control_TX = mor_pop[(mor_pop['State_Abrv'] == 'AZ') | (mor_pop['State_Abrv'] == 'CA') | (mor_pop['State_Abrv'] == 'OK')].copy()
 policy_implementation_year_TX = 2007
 
+df_treatment_TX = df_treatment_TX[(df_treatment_TX['YEAR'] >= 2003) & (df_treatment_TX['YEAR'] <= 2012)]
+df_control_TX = df_control_TX[(df_control_TX['YEAR'] >= 2003) & (df_control_TX['YEAR'] <= 2012)]
+
 plot = diff_in_diff_plot(df_treatment_TX, df_control_TX, policy_implementation_year_TX, 'Deaths_Per_Cap')
+    
 print(plot)
 
 
